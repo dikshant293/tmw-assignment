@@ -23,11 +23,11 @@ export async function getUserDataById(Id) {
   return rows;
 }
 
-export async function createUser(firstname, lastname, dob){
+export async function createUser(firstName, lastName, dob){
   const [result] = await pool.query(`
     INSERT INTO users (FirstName,LastName,DOB)
     VALUES (?,?,?)
-  `, [firstname,lastname,dob]);
+  `, [firstName,lastName,dob]);
   return getUserDataById(result.insertId);
 }
 
