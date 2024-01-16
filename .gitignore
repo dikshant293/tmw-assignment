@@ -22,3 +22,4 @@ tmw-assignment-frontend/build
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+tmw-assignment-backend/.env

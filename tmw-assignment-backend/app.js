@@ -1,10 +1,16 @@
 import express from 'express'
+import cors from 'cors'
 import {getAllUserData,getUserDataById,createUser} from './db.js'
 
 const app = express()
 const port = 8080
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
+app.use((err,req,res,next) => {
+    console.error(err.stack);
+    res.status(500).send("Something broke, check log...");
+});
 
 app.get('/',(req,res) => {
     res.send("this is a get request");
@@ -12,20 +18,18 @@ app.get('/',(req,res) => {
 
 app.get('/getUsers',async (req,res) => {
     const data = await getAllUserData();
-    res.send(data);
+    res.status(200).send({"data":data});
 })
 
 app.get('/getUsers/:id',async (req,res) => {
     const data = await getUserDataById(req.params.id);
-    res.send(data);
+    res.status(200),send({"data":data});
 })
 
 app.post('/createUser',async (req,res) => {
-    // const data = await getUserDataById(req.params["id"]);
-    // res.send(data);
     const {firstName, lastName, dob} = req.body;
     const data = await createUser(firstName,lastName,dob);
-    res.status(201).send(data)
+    res.status(201).send({"data":data})
 })
 
 app.listen(port,() =>{
