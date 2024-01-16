@@ -20,7 +20,7 @@ export async function getUserDataById(Id) {
     FROM users
     WHERE id=?
   `, [Id]);
-  return rows[0];
+  return rows;
 }
 
 export async function createUser(firstname, lastname, dob){

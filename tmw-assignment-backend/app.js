@@ -12,6 +12,11 @@ app.get('/getUsers',async (req,res) => {
     res.send(data);
 })
 
+app.get('/getUsers/:id',async (req,res) => {
+    const data = await getUserDataById(req.params["id"]);
+    res.send(data);
+})
+
 app.listen(port,() =>{
     console.log(`App is listening on port ${port}`);
 })
