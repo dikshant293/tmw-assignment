@@ -31,5 +31,12 @@ export async function createUser(firstName, lastName, dob){
   return getUserDataById(result.insertId);
 }
 
+export async function deleteUser(id){
+  const [result] = await pool.query(`
+    DELETE FROM users WHERE Id=?
+  `, [id]);
+  return result;
+}
+
 // const result = await createUser("Suryansh Pratap","Singh","2005-01-01");
 // console.log(result);

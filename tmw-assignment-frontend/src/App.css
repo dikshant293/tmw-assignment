@@ -29,7 +29,8 @@
 .tg .tg-c3ow {
   border-color: inherit;
   text-align: center;
-  vertical-align: top
+  vertical-align: top;
+  padding: 10px;
 }
 
 .main-body {
@@ -39,12 +40,8 @@
   justify-content: center;
   margin: 2%;
   padding: 2%;
-  background-color: aqua;
 }
 
-table {
-  margin: 2%;
-}
 
 label, button {
   margin-top: 5px;
@@ -52,7 +49,18 @@ label, button {
 }
 
 form {
-  /* width: 500px; */
-  background-color: blue;
+  width: 500px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
+
+input.submit {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+input[type="text"], input[type="date"] {
+  width: 100%;
+}
