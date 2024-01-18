@@ -38,27 +38,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2%;
   padding: 2%;
 }
-
 
 label, button {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
+
 form {
   width: 500px;
   padding: 10px;
   border-radius: 10px;
-}
-
-
-input.submit {
-  position: absolute;
-  top: 0px;
-  right: 0px;
 }
 
 input[type="text"], input[type="date"] {

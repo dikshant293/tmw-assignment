@@ -15,9 +15,21 @@ async function getUsers() {
 
 async function createUser(firstName, lastName, dob) {
     const d = new Date(`${dob}T06:00:00.000Z`)
-    if (firstName.length === 0 || lastName.length === 0 || isNaN(d) === true) {
-        alert("invalid input")
-        return { "msg": "invalid input" }
+    if (firstName.length === 0 ||
+        lastName.length === 0 ||
+        firstName.length > 50 ||
+        lastName.length === 0 ||
+        /[^a-zA-Z]/.test(firstName) ||
+        /[^a-zA-Z]/.test(lastName) ||
+        isNaN(d) === true) {
+        const errorMsg = `invalid input\n
+        name should only contain alphabets\n
+        first name max length = 30\n
+        last name max length = 50`
+        alert(errorMsg)
+        return {
+            "msg": errorMsg
+        }
     }
 
     var myHeaders = new Headers();
@@ -69,13 +81,13 @@ function App() {
     const [lastName, setlastName] = useState("")
     const [dob, setdob] = useState("");
     const [table, settable] = useState([])
-    
+
     useEffect(() => {
         fillTable(settable);
     }, [])
-    
+
     return (
-        <div className="main-body">
+        <div className="main-body" data-testid="app-1">
             <h1>Simple Birthday Tracker</h1>
             <form onSubmit={async (e) => {
                 e.preventDefault();
